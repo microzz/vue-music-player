@@ -1,17 +1,21 @@
-# vue-music-player
-## 3.13
-A music player by Vue.js。一个由Vue.js写的音乐播放器，今天完成了播放器的大体功能，数据是通过JSON模拟
-### 后续完善
-1. 搭建后台调用网上音乐API
-2. 完善功能
+# vue-music
 
--------
-## 3.14
-列表部分功能完善，部分代码优化，部分异步代码Promise化
-### 后续完善
-1. 冗余代码整合优化
-2. 部分代码封装
+> A Vue.js project
 
+## Build Setup
 
+``` bash
+# install dependencies
+npm install
 
+# serve with hot reload at localhost:8080
+npm run dev
 
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+```
+
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
