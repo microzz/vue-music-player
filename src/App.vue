@@ -28,19 +28,19 @@
 
             <div class="input-music-name input">
               <label for="music-name">歌曲名称</label>
-              <input v-model.trim="newMusicName" id="music-name" type="text" placeholder="请输入要显示的歌曲名(必填)">
+              <input v-model.trim="newMusicName" v-on:keyup.enter="addMusic" id="music-name" type="text" placeholder="请输入要显示的歌曲名(必填)">
               <img v-on:click.stop.prevent="newMusicName=''" src="http://omratag7g.bkt.clouddn.com/del2.png" alt="microzz.com">
             </div>
 
             <div class="input-music-src input">
               <label for="music-src">歌曲链接</label>
-              <input v-model.trim="newMusicSrc" id="music-src" type="text" placeholder="请输入歌曲超链接(必填)">
+              <input v-model.trim="newMusicSrc" v-on:keyup.enter="addMusic" id="music-src" type="text" placeholder="请输入歌曲超链接(必填)">
               <img v-on:click.stop.prevent="newMusicSrc=''" src="http://omratag7g.bkt.clouddn.com/del2.png" alt="microzz.com">
             </div>
 
             <div class="input-music-img-src input">
               <label for="music-img-src">照片链接</label>
-              <input v-model.trim="newMusicImgSrc" id="music-img-src" type="text" placeholder="请输入歌曲写真照片链接">
+              <input v-model.trim="newMusicImgSrc" v-on:keyup.enter="addMusic" id="music-img-src" type="text" placeholder="请输入歌曲写真照片链接">
               <img v-on:click.stop.prevent="newMusicImgSrc=''" src="http://omratag7g.bkt.clouddn.com/del2.png" alt="microzz.com">
             </div>
 
@@ -104,15 +104,15 @@
     <div v-bind:style="{backgroundColor: skinColor}" class="footer">
 
       <div class="prev">
-        <img v-on:click="toPrev" src="http://omratag7g.bkt.clouddn.com/music_rewind_button.png" class="icon" alt="microzz.com">
+        <img v-on:click.stop.prevent="toPrev" src="http://omratag7g.bkt.clouddn.com/music_rewind_button.png" class="icon" alt="microzz.com">
       </div>
 
       <div class="start-pause">
-        <img v-on:click="startPause" v-bind:src="playBtnSrc" class="icon" alt="microzz.com">
+        <img v-on:click.stop.prevent="startPause" v-bind:src="playBtnSrc" class="icon" alt="microzz.com">
       </div>
 
       <div class="next">
-        <img v-on:click="toNext" src="http://omratag7g.bkt.clouddn.com/music_fastforward_button.png" class="icon" alt="microzz.com">
+        <img v-on:click.stop.prevent="toNext" src="http://omratag7g.bkt.clouddn.com/music_fastforward_button.png" class="icon" alt="microzz.com">
       </div>
 
     </div>
