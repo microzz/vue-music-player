@@ -24,6 +24,7 @@
       <!-- 添加音乐 -->
       <transition name="fade">
         <div v-show="isShowAdd" class="add-music">
+          <p>添加歌曲</p>
           <div class="form">
 
             <div class="input-music-name input">
@@ -334,10 +335,12 @@ export default {
 }
 
 .msg {
-  position: relative;
+  position: absolute;
   z-index: 4;
+  top: 2px;
+  right: 0;
   margin: auto;
-  padding-left: 40px;
+  padding-left: 35px;
   padding-right: 20px;
   background: rgba(0, 0, 0, 0.6);
   border-radius: 3px;
@@ -349,7 +352,7 @@ export default {
   width: 18px;
   height: 18px;
   position: absolute;
-  top: 5px;
+  top: 6px;
   left: 10px;
 }
 
@@ -424,26 +427,34 @@ export default {
 }
 
 .content .add-music {
-  background: rgba(0, 0, 0, .5);
-  position: absolute;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
-  height: 100%;
+  height: 98%;
   z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding-top: 10px;
+  overflow: auto;
+}
+
+.content .add-music p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  margin-top: 3rem;
+}
+
+@media only screen and (min-width: 1024px) {
+  .content .add-music p {
+      margin-top: 6rem;
+  }
 }
 
 .content .add-music .form {
-  background: rgba(0, 0, 0, .7);
-  position: absolute;
-  width: 100%;
-  height: 78.5%;
-  flex: 1;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  padding-top: 110px;
+  /*padding-bottom: 10px;*/
+
 }
 
 .content .add-music .form img {
@@ -466,24 +477,21 @@ input {
   padding-right: 25px;
 }
 
+
 .content .add-music .form .input-music-name {
-  flex: 1;
-  margin: auto;
+  margin-bottom: 1.8rem;
 }
 
 .content .add-music .form .input-music-src {
-  flex: 1;
-  margin: auto;
+  margin-bottom: 1.8rem;
 }
 
 .content .add-music .form .input-music-img-src {
-  flex: 1;
-  margin: auto;
+  margin-bottom: 2rem;
 }
 
 .content .add-music .form .input-btn {
-  flex: 3;
-  margin: auto;
+
 }
 
 .content .add-music .form .input-btn button {
@@ -491,10 +499,16 @@ input {
   border: none;
   border-radius: 5px;
   box-shadow: 1px 1px 9px #FF5722;
-  margin: auto 5px;
+  margin: auto 15px;
   font-size: 1rem;
   font-weight: bold;
   color: #263238;
+  padding: 7px;
+  border-bottom: 1px dotted green;
+}
+
+.content .add-music .form .input-btn button:first-child {
+  margin-left: 2rem;
 }
 
 .content .music-list {
