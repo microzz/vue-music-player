@@ -5,7 +5,7 @@
 
 ## 源代码
 GitHub地址: 🔗https://github.com/microzz/vue-music-player
-欢迎大家follow和star哦😄
+欢迎大家follow和star哦
 
 ## 介绍
 学习Vue.js后，决定做个小项目锻炼一下，于是选择了典型的音乐播放器上手。其中遇到了很多坑，也学到了很多。代码可能还有瑕疵，欢迎大家到我的[GitHub](https://github.com/microzz/vue-music-player)反馈，相互交流学习。同时也欢迎大家follow和star😄
