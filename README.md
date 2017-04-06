@@ -1,3 +1,4 @@
+# 2.0.0版本已完成，将于近期上传...
 # Vue.js写一个音乐播放器
 ## 在线预览
 在线预览地址1: 🔗https://microzz.github.io/vue-music-player/
