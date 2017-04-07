@@ -1,6 +1,11 @@
 {
   "musicData": [
     {
+      "name": "李玉刚 - 刚好遇见你",
+      "src": "http://m2.music.126.net/qv3RI4K7ABKJ0TyAdb3taw==/3250156397064860.mp3",
+      "musicImgSrc": "http://p4.music.126.net/lDyytkTaPYVTb1Vpide6AA==/18591642115187138.jpg"
+    },
+    {
       "name": "以冬 - 我的一个道姑朋友",
       "src": "http://m2.music.126.net/7WiRhPdirEJ2axW9Xm6uJQ==/1415071481819545.mp3",
       "musicImgSrc": "http://omratag7g.bkt.clouddn.com/%E6%B0%91%E8%B0%A3.jpg"
@@ -13,22 +18,12 @@
     {
       "name": "赵雷 - 成都",
       "src":"http://m2.music.126.net/7o5D4dA6271VktgawcbZFA==/18665309393829604.mp3",
-      "musicImgSrc": "http://omratag7g.bkt.clouddn.com/%E8%B5%B5%E9%9B%B7.jpg"
+      "musicImgSrc": "http://p4.music.126.net/34YW1QtKxJ_3YnX9ZzKhzw==/2946691234868155.jpg"
     },
     {
       "name": "韩安旭 - 多幸运",
       "src":"http://m2.music.126.net/N_2fJbqpi8QDnV1YJPCsuw==/3424978721721344.mp3",
-      "musicImgSrc": "http://omratag7g.bkt.clouddn.com/%E9%9F%A9%E5%AE%89%E6%97%AD.jpg"
-    },
-    {
-      "name": "赵雷 - 理想",
-      "src":"http://m2.music.126.net/gQDmHxjY_gAtRE-RKqDQJw==/1413971968361530.mp3",
-      "musicImgSrc": "http://omratag7g.bkt.clouddn.com/%E8%B5%B5%E9%9B%B7.jpg"
-    },
-    {
-      "name": "艾索 - 晚安喵",
-      "src": "http://m2.music.126.net/DheCicOCS6OGtFq0G04O7Q==/5976945209191418.mp3",
-      "musicImgSrc": "http://omratag7g.bkt.clouddn.com/%E6%99%9A%E5%AE%89%E5%96%B5.jpg"
+      "musicImgSrc": "http://p3.music.126.net/U9RoJy0AUsoYuaKjmJbAzQ==/3386495814257685.jpg"
     },
     {
       "name": "李健 - 假如爱有天意",
@@ -38,7 +33,7 @@
     {
       "name": "七月上",
       "src": "http://m2.music.126.net/K1SFXCvWf8BO9VEpSvx2ew==/7967061257205150.mp",
-      "musicImgSrc": "http://omratag7g.bkt.clouddn.com/%E4%B8%83%E6%9C%88%E4%B8%8A.jpg"
+      "musicImgSrc": "http://p3.music.126.net/9kZl6NRj3HxmQQ8DqTjZ4Q==/17729624997966923.jpg"
     },
     {
       "name": "咱们屯里人(粤语版)",

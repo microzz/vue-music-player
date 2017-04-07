@@ -62,7 +62,7 @@ export default {
       text-align: center;
       padding-top: 10px;
       padding-bottom: 10px;
-      border-bottom: 1px dotted white;
+      border-bottom: 1px solid rgba(255, 255, 255, .2);
 
       span.func {
         flex: 1;
@@ -77,6 +77,7 @@ export default {
           bottom: 0;
           background: url(./func.svg) no-repeat;
           background-size: contain;
+          cursor: pointer;
 
         }
       }
@@ -96,6 +97,7 @@ export default {
           bottom: 0;
           background: url(./search.svg) no-repeat;
           background-size: contain;
+          cursor: pointer;
         }
       }
     }
@@ -106,8 +108,14 @@ export default {
 
       a {
         display: inline-block;
-        width: 100%;
+        width: 50%;
       }
+      a::after {
+        background-color: rgba(255, 255, 255, .2);
+        height: 1px;
+        bottom: -2px;
+      }
+
       .item {
         display: inline-block;
         flex: 1;

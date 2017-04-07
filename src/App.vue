@@ -1,23 +1,25 @@
 <template>
   <div id="app">
 
-    <!-- <div v-show="true" class="index"> -->
-      <AsideMenu v-show="isShowAsideMenu"></AsideMenu>
+    <transition name="show">
+      <div v-show="isShowIndex" class="index">
+        <AsideMenu v-show="isShowAsideMenu"></AsideMenu>
 
-      <VHeader></VHeader>
+        <VHeader></VHeader>
 
-      <router-view></router-view>
+        <router-view></router-view>
 
-      <VFooter></VFooter>
-    <!-- </div> -->
+        <VFooter></VFooter>
+      </div>
+    </transition>
 
-
-    <!-- <Play v-else></Play> -->
-
-
+    <transition name="showIndex">
+      <Play v-show="!isShowIndex"></Play>
+    </transition>
 
     <audio v-bind:src="audio.src || (musicData[0]&&musicData[0].src) || defaultSrc" v-bind:autoplay="isPlaying" ref="audio"></audio>
 
+    <About v-if="isShowAbout"></About>
 
   </div>
 </template>
@@ -27,6 +29,7 @@ import VHeader from './components/Header/Header.vue';
 import VFooter from './components/Footer/Footer.vue';
 import AsideMenu from './components/AsideMenu/AsideMenu.vue';
 import Play from './components/Play/Play.vue';
+import About from './components/About/About.vue';
 
 export default {
   name: 'app',
@@ -34,13 +37,17 @@ export default {
     VHeader,
     VFooter,
     AsideMenu,
-    Play
+    Play,
+    About
   },
   beforeCreate() {
     this.$store.dispatch('getData');
   },
   mounted() {
-    this.$store.commit('findDOM', {name: 'audio', dom: this.$refs.audio})
+    this.$store.commit('findDOM', {name: 'audio', dom: this.$refs.audio});
+    this.$refs.audio.addEventListener('ended', () => { this.next(); });
+    this.$refs.audio.addEventListener('error', () => { this.next(); });
+    console.log("%c Powered by Zhaohui - microzz.com","background-image:-webkit-gradient( linear, left top,right top, color-stop(0, #00a419),color-stop(0.15, #f44336), color-stop(0.29, #ff4300),color-stop(0.3, #AA00FF),color-stop(0.4, #8BC34A), color-stop(0.45, #607D8B),color-stop(0.6, #4096EE), color-stop(0.75, #D50000),color-stop(0.9, #4096EE), color-stop(1, #FF1A00));color:transparent;-webkit-background-clip:text;font-size:13px;");
   },
   computed: {
     audio() {
@@ -58,6 +65,12 @@ export default {
     isShowSearch() {
       return this.$store.state.isShowSearch;
     },
+    isShowIndex() {
+      return this.$store.state.isShowIndex;
+    },
+    isShowAbout() {
+      return this.$store.state.isShowAbout;
+    },
     musicData() {
       return this.$store.state.musicData;
     }
@@ -68,19 +81,37 @@ export default {
     };
   },
   methods: {
-    closeSearch() {
-      this.$store.commit('showSearch', false);
-    },
-    // toSearch() {
-    //   this.$store.commit('showSearch', false);
-    //   this.$router.push('/find');
-    // }
+    next() {
+      this.audio.index = this.audio.index === this.musicData.length - 1 ? 0 : (++this.audio.index);
+      this.$store.commit('toggleMusic', this.audio.index);
+    }
   }
 }
 </script>
 
 <style lang="scss">
 @import "./common/style/base.scss";
+
+.showIndex-enter-active {
+  transition: all .4s ease-out;
+}
+.showIndex-leave-active {
+  transition: all 0 ease;
+}
+.showIndex-enter, .showIndex-leave-active {
+  transform: translateY(350px);
+  opacity: 0;
+}
+.show-enter-active {
+  transition: all .4s ease;
+}
+.show-leave-active {
+  transition: all 0 ease-out;
+}
+.show-enter, .show-leave-active {
+  transform: translateX(-350px);
+  opacity: 0;
+}
 
 .down-enter-active {
   transition: all .2s ease-in-out;
@@ -146,7 +177,6 @@ export default {
     }
     .mask {
       flex: 15;
-      // background-color: black;
     }
   }
 

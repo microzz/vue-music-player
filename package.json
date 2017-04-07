@@ -1,7 +1,7 @@
 {
-  "name": "vue-sell2",
-  "version": "1.0.0",
-  "description": "A Vue.js project",
+  "name": "vue-music-player",
+  "version": "2.0.0",
+  "description": "A Vue.js music player",
   "author": "Zhaohui <zhaohui@microzz.com>",
   "private": true,
   "scripts": {

@@ -19,20 +19,20 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     musicData: [],
-    skinColor: '#B72712',
+    skinColor: localStorage.skinColor || '#B72712',
+    isShowIndex: true,
     isPlaying: false,
     isAnimation: false,
     isShowAsideMenu: false,
-    // isShowSearch: false,
     isShowMiniMusic: false,
-    // currentView: 'VHeader',
+    isShowAbout: false,
     linkBorderIndex: '',
     DOM: {},
     audio: {
       name: '',
       src: '',
       musicImgSrc: '',
-      index: ''
+      index: 0
     }
   },
   mutations: {
@@ -68,20 +68,17 @@ const store = new Vuex.Store({
     findDOM(state, payload) {
       state.DOM[payload.name] = payload.dom;
     },
-    // toggleCurrentView(state, currentView) {
-    //   state.currentView = currentView;
-    // },
-    // toAnimate(state, flag) {
-    //   state.isAnimation = flag;
-    // },
+    showIndex(state, flag) {
+      state.isShowIndex = flag;
+    },
     showAsideMenu(state, flag) {
       state.isShowAsideMenu = flag;
     },
-    // showSearch(state, flag) {
-    //   state.isShowSearch = flag;
-    // },
     showMiniMusic(state, flag) {
       state.isShowMiniMusic = flag;
+    },
+    showAbout(state, flag) {
+      state.isShowAbout = flag;
     },
     changeLinkBorderIndex(state, index) {
       state.linkBorderIndex = index;

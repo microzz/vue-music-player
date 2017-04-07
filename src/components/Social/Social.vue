@@ -1,43 +1,47 @@
 <template lang="html">
-  <div  @scroll="isShowControl=true" class="social">
 
-    <div v-show="isShowMask" class="mask">
-      <div class="loading">
-        <i class="icon-loading"></i>加载中
-      </div>
-    </div>
+  <transition name="showRouter">
+    <div  @click="isShowControl=true" @touchend="isShowControl=true" class="social">
 
-    <div class="title">
-      <div v-text="date" class="date" ></div>
-      <div v-text="volume" class="title-desc" ></div>
-    </div>
-
-    <div class="img">
-      <img v-bind:src="imgUrl" alt="插画 - microzz.com">
-      <div class="img-desc" >插画 | {{picInfo}}</div>
-    </div>
-
-    <div class="content">
-      <p v-text="forward"></p>
-      <div v-text="wordsInfo" class="content-desc"></div>
-    </div>
-
-    <transition name="fade">
-      <div v-show="isShowControl" class="control">
-        <div class="prev">
-          <a @click="getOne(--index)" :class="{gray: index === 0}" href="javascript:;">上一篇</a>
-        </div>
+      <div v-show="isShowMask" class="mask">
         <div class="loading">
-          <div v-if="!isLoading" class="one">One</div>
-          <div v-else class="icon-loading"></div>
+          <i class="icon-loading"></i>加载中
         </div>
-        <div class="next">
-          <a @click="getOne(++index)" :class="{gray: index === 9}" href="javascript:;">下一篇</a>
-        </div>
-
       </div>
-    </transition>
-  </div>
+
+      <div class="title">
+        <div v-text="date" class="date" ></div>
+        <div v-text="volume" class="title-desc" ></div>
+      </div>
+
+      <div class="img">
+        <img v-bind:src="imgUrl" alt="插画 - microzz.com">
+        <div class="img-desc" >插画 | {{picInfo}}</div>
+      </div>
+
+      <div class="content">
+        <p v-text="forward"></p>
+        <div v-text="wordsInfo" class="content-desc"></div>
+      </div>
+
+      <transition name="fade">
+        <div v-show="isShowControl" class="control">
+          <div class="prev">
+            <a @click="getOne(--index)" :class="{gray: index === 0}" href="javascript:;">上一篇</a>
+          </div>
+          <div class="loading">
+            <div v-if="!isLoading" class="one">One</div>
+            <div v-else class="icon-loading"></div>
+          </div>
+          <div class="next">
+            <a @click="getOne(++index)" :class="{gray: index === 9}" href="javascript:;">下一篇</a>
+          </div>
+
+        </div>
+      </transition>
+    </div>
+  </transition>
+
 </template>
 
 <script>
@@ -101,6 +105,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.showRouter-enter-active {
+  transition: all .3s ease;
+}
+.showRouter-leave-active {
+  transition: all 0 ease-out;
+}
+.showRouter-enter, .showRouter-leave-active {
+  transform: translateX(450px);
+  opacity: 0;
+}
 .fade-enter-active {
   transition: all .3s ease-in-out;
 }
@@ -120,7 +134,7 @@ export default {
     flex:7;
     overflow: auto;
     background-color: rgba(0, 0, 0, .05);
-    padding-bottom: 250px;
+    padding-bottom: 200px;
     .mask {
       position: absolute;
       z-index: 2;
@@ -167,7 +181,7 @@ export default {
 
     }
     .img {
-      flex: 4;
+      // flex: 4;
       padding-bottom: 10px;
       margin-top: 4px;
       margin-bottom: 5px;
@@ -183,7 +197,7 @@ export default {
 
     }
     .content {
-      flex: 3;
+      // flex: 2;
       padding: 2px 10px;
       p {
         font-size: 80%;
@@ -200,7 +214,7 @@ export default {
     .control {
       position: fixed;
       bottom: 0;
-      left: 0;
+      // left: 0;
       display: flex;
       flex: 1;
       justify-content: center;
@@ -208,7 +222,6 @@ export default {
       background-color: none;
       width: 100%;
       padding: 10px 0;
-      // height: 100px;
       a {
         color: black;
         position: relative;
@@ -249,6 +262,11 @@ export default {
       }
       .next {
         flex: 1;
+      }
+    }
+    @media screen and(min-width: 769px) {
+      .control {
+        width: 460px;
       }
     }
     .control::before {

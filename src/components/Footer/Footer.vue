@@ -1,13 +1,13 @@
 <template lang="html">
 
   <transition name="fade">
-    <div v-show="isShowMiniMusic" class="footer">
+    <div v-show="isShowMiniMusic" :style="{backgroundColor: skinColor}" class="footer">
       <div class="mini-music">
         <div class="music-img">
-          <img ref="img" v-bind:src="audio.musicImgSrc || (musicData[0]&&musicData[0].musicImgSrc) || defaultImg" alt="">
+          <img @click="showPlay" ref="img" v-bind:src="audio.musicImgSrc || (musicData[0]&&musicData[0].musicImgSrc) || defaultImg" alt="microzz.com">
         </div>
         <div class="music-name">
-          <p>{{audio.name || (musicData[0]&&musicData[0].name) || 'Powered by microzz.com'}}</p>
+          <p @click="showPlay">{{audio.name || (musicData[0]&&musicData[0].name) || 'Powered by microzz.com'}}</p>
           <div class="progress">
             <span class="start">{{transformTime(now)}}</span>
             <div @click="changeTime($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)" ref="progressBar" class="progress-bar">
@@ -17,7 +17,7 @@
           </div>
         </div>
         <div class="music-control">
-          <span @click="play()" v-bind:class="[isPlaying ? pauseIcon : playIcon]"></span>
+          <i @click="play()" v-bind:class="[isPlaying ? pauseIcon : playIcon]"></i>
         </div>
       </div>
     </div>
@@ -27,8 +27,6 @@
 </template>
 
 <script>
-import MusicData from '../../common/music-data';
-
 
 export default {
   mounted() {
@@ -49,9 +47,9 @@ export default {
     isPlaying() {
       return this.$store.state.isPlaying;
     },
-    // isAnimation() {
-    //   return this.$store.state.isAnimation;
-    // },
+    isShowAsideMenu() {
+      return this.$store.state.isShowAsideMenu;
+    },
     isShowMiniMusic() {
       return this.$store.state.isShowMiniMusic;
     },
@@ -63,12 +61,14 @@ export default {
     },
     musicData() {
       return this.$store.state.musicData;
+    },
+    skinColor() {
+      return this.$store.state.skinColor;
     }
 
   },
   data() {
     return {
-      MusicData,
       playIcon: 'play-icon',
       pauseIcon: 'pause-icon',
       now: 0,
@@ -81,6 +81,13 @@ export default {
     play() {
       this.$store.commit('play', !this.isPlaying);
       !this.isPlaying ? this.DOM.audio.pause() : this.DOM.audio.play();
+    },
+    showPlay() {
+      if (this.isShowAsideMenu) {
+        return;
+      }
+      this.$store.commit('showIndex', false);
+      this.$store.commit('showMiniMusic', false);
     },
     changeTime(event) {
       let progressBar = this.$refs.progressBar;
@@ -132,6 +139,8 @@ export default {
     width: 100%;
     height: 70px;
     text-align: center;
+    // position: fixed;
+    // bottom: 0;
 
     .mini-music {
       display: flex;
@@ -149,6 +158,7 @@ export default {
           height: 70px;
           border-radius: 35px;
           background-size: contain;
+          cursor: pointer;
         }
       }
       .music-name {
@@ -159,10 +169,13 @@ export default {
         width: 100%;
 
         p {
+          position: relative;
+          z-index: 1;
           height: 40px;
           line-height: 40px;
           overflow: hidden;
           white-space: nowrap;
+          // cursor: pointer;
         }
         .progress {
           position: absolute;
@@ -179,6 +192,16 @@ export default {
             right: 4px;
             // padding-left: 5px;
           }
+          @media screen and(min-width: 600px) {
+            span.start {
+              position: absolute;
+              left: 26px;
+            }
+            span.end {
+              position: absolute;
+              right: 30px;
+            }
+          }
           .progress-bar {
             position: relative;
             width: 50%;
@@ -187,7 +210,7 @@ export default {
             background-color: rgba(255, 255, 255, .5);
             vertical-align: 2px;
             border-radius: 3px;
-
+            cursor: pointer;
 
             .now {
               position: absolute;
@@ -210,22 +233,21 @@ export default {
       }
       .music-control {
         flex: 1.5;
-
-        .play-icon {
+        i {
           padding-right: 10px;
           width: 45px;
           height: 45px;
           margin-top: 13px;
           display: inline-block;
+          cursor: pointer;
+          border-radius: 22px;
+        }
+        .play-icon {
           background: url(./play.svg) no-repeat;
           background-size: contain;
+
         }
         .pause-icon {
-          padding-right: 10px;
-          width: 45px;
-          height: 45px;
-          margin-top: 13px;
-          display: inline-block;
           background: url(./pause.svg) no-repeat;
           background-size: contain;
         }
