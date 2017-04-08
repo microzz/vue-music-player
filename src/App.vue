@@ -24,8 +24,10 @@
       <Play v-show="!isShowIndex"></Play>
     </transition>
 
+    <!-- 隐藏的audio标签 -->
     <audio v-bind:src="audio.src || (musicData[0]&&musicData[0].src) || defaultSrc" v-bind:autoplay="isPlaying" ref="audio"></audio>
 
+    <!-- 关于界面 -->
     <About v-if="isShowAbout"></About>
 
   </div>
