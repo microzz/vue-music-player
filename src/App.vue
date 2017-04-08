@@ -1,18 +1,25 @@
 <template>
   <div id="app">
 
+    <!-- 主界面部分 -->
     <transition name="show">
       <div v-show="isShowIndex" class="index">
+
+        <!-- 侧边栏 -->
         <AsideMenu v-show="isShowAsideMenu"></AsideMenu>
 
+        <!-- 头部 -->
         <VHeader></VHeader>
 
+        <!-- router控制的Tab页内容 -->
         <router-view></router-view>
 
+        <!-- 尾部mini播放器 -->
         <VFooter></VFooter>
       </div>
     </transition>
 
+    <!-- 播放界面 -->
     <transition name="showIndex">
       <Play v-show="!isShowIndex"></Play>
     </transition>
