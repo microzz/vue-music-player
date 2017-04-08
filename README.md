@@ -10,7 +10,8 @@
 在线预览地址：👉 [Vue音乐播放器](https://microzz.com:3000/vue-music/)
 
 ### 预览图
-![Vue音乐播放器升级版 - microzz.com](https://icdn.microzz.com/20170408_vue_music/preview.gif)
+![Vue音乐播放器升级版 - microzz.com](https://icdn.microzz.com/20170408_vue_music/preview.gif) 
+
 更多预览图请看👉 [更多](https://github.com/microzz/vue-music-player/tree/2.0.0/preview)
 
 ## 技术栈
