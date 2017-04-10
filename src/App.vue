@@ -3,7 +3,7 @@
 
     <!-- 头部音乐信息 -->
     <div v-bind:style="{backgroundColor: skinColor}" class="header">
-      <div v-on:click="isShowAdd=!isShowAdd" class="add-icon">
+      <div v-on:click="isShowAdd=!isShowAdd;isShowList=false" class="add-icon">
         <img src="http://omratag7g.bkt.clouddn.com/add.png" class="icon" alt="microzz.com">
       </div>
       <div class="music-title">
@@ -21,46 +21,13 @@
         Your browser does not support the audio element.
       </audio>
 
-      <!-- 添加音乐 -->
-      <transition name="fade">
-        <div v-show="isShowAdd" class="add-music">
-          <p>添加歌曲</p>
-          <div class="form">
-
-            <div class="input-music-name input">
-              <label for="music-name">歌曲名称</label>
-              <input v-model.trim="newMusicName" v-on:keyup.enter="addMusic" id="music-name" type="text" placeholder="请输入要显示的歌曲名(必填)">
-              <img v-on:click.stop.prevent="newMusicName=''" src="http://omratag7g.bkt.clouddn.com/del2.png" alt="microzz.com">
-            </div>
-
-            <div class="input-music-src input">
-              <label for="music-src">歌曲链接</label>
-              <input v-model.trim="newMusicSrc" v-on:keyup.enter="addMusic" id="music-src" type="text" placeholder="请输入歌曲超链接(必填)">
-              <img v-on:click.stop.prevent="newMusicSrc=''" src="http://omratag7g.bkt.clouddn.com/del2.png" alt="microzz.com">
-            </div>
-
-            <div class="input-music-img-src input">
-              <label for="music-img-src">照片链接</label>
-              <input v-model.trim="newMusicImgSrc" v-on:keyup.enter="addMusic" id="music-img-src" type="text" placeholder="请输入歌曲写真照片链接">
-              <img v-on:click.stop.prevent="newMusicImgSrc=''" src="http://omratag7g.bkt.clouddn.com/del2.png" alt="microzz.com">
-            </div>
-
-            <div class="input-btn input">
-              <button v-on:click.stop.prevent="addMusic">添加音乐</button>
-              <button v-on:click.stop.prevent="isShowAdd=false">取消操作</button>
-            </div>
-
-          </div>
-        </div>
-      </transition>
-
       <!-- 音乐列表，同是设置显示、隐藏的过渡效果 -->
       <transition name="fade">
         <div class="music-list" v-show="isShowList">
           <ul>
-            <li v-on:click.stop.prevent="toggleMusic(item, index)" v-bind:class="{ activeColor: item.src === (DOM.audio && DOM.audio.src) }" v-for="(item, index) in musics">
-              {{ item.name }}
-              <img v-on:click.stop.prevent="delMusic(index)" src="http://omratag7g.bkt.clouddn.com/%E5%88%A0%E9%99%A4.png" alt="microzz.com">
+            <li v-on:click.stop.prevent="toggleMusic(index)" v-bind:class="{ activeColor: item.src === (DOM.audio && DOM.audio.src) }" v-for="(item, index) in musics">
+              <span>{{ item.name }}</span>
+              <img v-on:click.stop.prevent="delMusic(index)" src="./assets/images/recycle.png" alt="microzz.com">
             </li>
           </ul>
         </div>
@@ -100,12 +67,46 @@
         <img v-on:click.stop.prevent="isShowColor = !isShowColor" class="skin" v-bind:src="skinSrc" alt="microzz.com">
 
     </div>
+    
+          <!-- 添加音乐 -->
+    <transition name="fade">
+        <div v-show="isShowAdd" class="add-music">
+        <div class="add_music_box">
+            <p>添加歌曲</p>
+            <div class="form">
+
+              <div class="input-music-name input">
+                <label for="musicname">歌曲名称</label>
+                <input v-model.trim="newMusicName" v-on:keyup.enter="addMusic" id="musicname" type="text" placeholder="请输入要显示的歌曲名(必填)">
+                <img v-on:click.stop.prevent="newMusicName=''" src="http://omratag7g.bkt.clouddn.com/del2.png" alt="microzz.com">
+              </div>
+
+              <div class="input-music-src input">
+                <label for="music-src">歌曲链接</label>
+                <input v-model.trim="newMusicSrc" v-on:keyup.enter="addMusic" id="music-src" type="text" placeholder="请输入歌曲超链接(必填)">
+                <img v-on:click.stop.prevent="newMusicSrc=''" src="http://omratag7g.bkt.clouddn.com/del2.png" alt="microzz.com">
+              </div>
+
+              <div class="input-music-img-src input">
+                <label for="music-img-src">照片链接</label>
+                <input v-model.trim="newMusicImgSrc" v-on:keyup.enter="addMusic" id="music-img-src" type="text" placeholder="请输入歌曲写真照片链接">
+                <img v-on:click.stop.prevent="newMusicImgSrc=''" src="http://omratag7g.bkt.clouddn.com/del2.png" alt="microzz.com">
+              </div>
+
+              <div class="input-btn input">
+                <button v-on:click.stop.prevent="addMusic">添加音乐</button>
+                <button v-on:click.stop.prevent="isShowAdd=false">取消操作</button>
+              </div>
+            </div>
+        </div>
+        </div>
+      </transition>
 
     <!-- 底部控制栏  -->
     <div v-bind:style="{backgroundColor: skinColor}" class="footer">
 
       <div class="prev">
-        <img v-on:click.stop.prevent="toPrev" src="http://omratag7g.bkt.clouddn.com/music_rewind_button.png" class="icon" alt="microzz.com">
+        <img v-on:click.stop.prevent="toggleMusic(index-1) " src="http://omratag7g.bkt.clouddn.com/music_rewind_button.png" class="icon" alt="microzz.com" :index="index">
       </div>
 
       <div class="start-pause">
@@ -113,7 +114,7 @@
       </div>
 
       <div class="next">
-        <img v-on:click.stop.prevent="toNext" src="http://omratag7g.bkt.clouddn.com/music_fastforward_button.png" class="icon" alt="microzz.com">
+        <img v-on:click.stop.prevent="toggleMusic(index+1)" src="http://omratag7g.bkt.clouddn.com/music_fastforward_button.png" class="icon" alt="microzz.com" :index="index">
       </div>
 
     </div>
@@ -136,10 +137,12 @@ export default {
       audio: document.querySelector('audio'),
       rotateImg: document.querySelector('.rotateImg')
     };
+    //audio.duration播放时间
+    //audio.currentTime播放进度
     this.musicSrc = this.musics[this.index].src;
     this.musicTitle = this.musics[this.index].name;
     this.musicImgSrc = this.musics[this.index].musicImgSrc || this.musicSrcDefault;
-    this.DOM.audio.addEventListener('ended', () => {this.toChange('next').then(this.toAnimate);});
+    this.DOM.audio.addEventListener('ended', () => {this.toggleMusic(index+1);});
     Store.fetch('musics').length === 0 ? Store.save(this.musics) : null;
 
   },
@@ -219,8 +222,18 @@ export default {
     // 删除音乐
     delMusic(index) {
       if (confirm('确认删除吗？')) {
-        this.musics.splice(index, 1);
-        if (this.musics.length === 0) {
+        var paused = this.DOM.audio.paused;
+        if(index == this.index){
+          this.musics.splice(index, 1);
+          if(this.musics.length!=0){
+            this.toggleMusic(index);
+            if(paused){this.DOM.audio.play();this.startPause();}
+          }
+        }else{
+         index<this.index?this.index--:null;
+         this.musics.splice(index, 1);
+        }
+        if(this.musics.length == 0){
           this.musicTitle = '没有歌曲啦 💔';
           this.DOM.audio.autoplay = false;
           this.DOM.audio.pause();
@@ -229,92 +242,40 @@ export default {
           this.DOM.rotateImg.style.animationPlayState = 'paused';
           this.musicImgSrc = this.musicSrcDefault;
           this.showMsg('赶紧添加几首音乐吧😄');
-          return;
-        }
-        if (index == this.index) {
-          this.index --;
-          if (this.DOM.audio.paused) {
-            this.toNext().then(() => {
-              setTimeout(() => {
-                this.DOM.audio.autoplay = false;
-                this.DOM.audio.pause();
-                this.isImgAnimate = false;
-                this.playBtnSrc = 'http://omratag7g.bkt.clouddn.com/music_play_button.png';
-                this.DOM.rotateImg.style.animationPlayState = 'paused';
-              }, 0)
-
-            });
-
-          } else {
-            this.toNext();
-          }
+          return;        
+        }     
       }
-
-      }
-    },
-    // 列表切换音乐
-    toggleMusic(item, index) {
+      },
+    // 切换音乐
+    toggleMusic(index) {
+      index = index < 0 ? this.musics.length-1 : index;
+      index = index > this.musics.length-1 ? 0 : index;
+      var item = this.musics[index];
       this.index = index;
       this.musicTitle = item.name;
       this.musicSrc = item.src;
       this.musicImgSrc = item.musicImgSrc || this.musicSrcDefault;
       this.DOM.audio.autoplay = true;
-      this.isImgAnimate = true;
-      this.playBtnSrc = 'http://omratag7g.bkt.clouddn.com/music_pause_button.png';
       this.DOM.audio.play();
+      this.playBtnSrc = 'http://omratag7g.bkt.clouddn.com/music_pause_button.png';
       this.toAnimate();
       this.isShowList = false;
-
     },
     // 图片旋转
     toAnimate() {
-      this.isImgAnimate = false;
-      // 异步
-      setTimeout( ()=> {
         this.isImgAnimate = true;
         this.DOM.rotateImg.style.animationPlayState = 'running';
-      }, 0);
-    },
-
-    // 切换
-    toChange(changeFlag) {
-      // Promise 异步
-      return new Promise( (resolve, reject) => {
-        if (changeFlag === 'prev') {
-          this.index -= 1;
-          this.index = this.index < 0 ? this.musics.length-1 : this.index;
-        } else {
-          this.index += 1;
-          this.index = this.index > this.musics.length-1 ? 0 : this.index;
-        }
-        this.musicSrc = this.musics[this.index].src;
-        this.playBtnSrc = 'http://omratag7g.bkt.clouddn.com/music_pause_button.png';
-        this.DOM.audio.autoplay = true;
-        this.musicTitle = this.musics[this.index].name;
-        this.musicImgSrc = this.musics[this.index].musicImgSrc || this.musicSrcDefault;
-        resolve();
-      });
-    },
-
-    // 上一首
-    toPrev() {
-      this.toChange('prev').then(this.toAnimate);
     },
 
     // 开始 or 暂停
     startPause() {
+      if(this.musics.length != 0){
       this.playBtnSrc = this.DOM.audio.paused ? 'http://omratag7g.bkt.clouddn.com/music_pause_button.png' : 'http://omratag7g.bkt.clouddn.com/music_play_button.png';
       this.DOM.audio.paused ? this.DOM.audio.play() : this.DOM.audio.pause();
       this.DOM.rotateImg.style.animationPlayState = this.DOM.audio.paused ? 'paused' : 'running'
       this.isImgAnimate = true;
-    },
-
-    // 下一首
-    toNext() {
-      return new Promise( (resolve, reject) => {
-        this.toChange('next').then(this.toAnimate).then(resolve);
-      })
     }
+    },
   },
 
   components: {}
@@ -326,7 +287,30 @@ export default {
   width: 100%;
   height: 100%;
   display: flex;
+  position: relative;
   flex-direction: column;
+}
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgba(0,0,0,.6);
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    background: rgba(60,60,60,.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(60,60,60,.8); 
 }
 
 .borderStyle {
@@ -339,20 +323,18 @@ export default {
   z-index: 4;
   top: 2px;
   right: 0;
-  margin: auto;
-  padding-left: 35px;
-  padding-right: 20px;
+  height: 32px;
+  line-height: 32px;
+  padding:2px 20px 5px 35px;
   background: rgba(0, 0, 0, 0.6);
   border-radius: 3px;
-  padding-top: 2px;
-  padding-bottom: 5px;
 }
 
 .msg img {
   width: 18px;
   height: 18px;
   position: absolute;
-  top: 6px;
+  top: 9px;
   left: 10px;
 }
 
@@ -425,22 +407,27 @@ export default {
   flex-direction: column;
   position: relative;
 }
-
-.content .add-music {
+.add_music_box{
+    width: 350px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    margin-top: -70px;
+}
+ .add-music {
   text-align: center;
   color: white;
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
-  height: 98%;
+  height: 100%;
   z-index: 3;
-  position: fixed;
+  position: absolute;
   left: 0;
   bottom: 0;
-  padding-top: 10px;
-  overflow: auto;
 }
 
-.content .add-music p {
+ .add-music p {
   font-size: 1.5rem;
   margin-bottom: 2rem;
   margin-top: 3rem;
@@ -452,66 +439,66 @@ export default {
   }
 }
 
-.content .add-music .form {
+ .add-music .form {
   /*padding-bottom: 10px;*/
 
 }
 
-.content .add-music .form img {
-  width: 20px;
-  height: 20px;
-  position: relative;
-  margin-left: -29px;
-  top: 6px;
-  border-radius: 11px;
+.add-music .form img {
+    width: 15px;
+    position: relative;
+    margin-left: -25px;
+    top: 4px;
+    cursor: pointer;
 }
 
 input {
-  border: none;
-  border-bottom: 2px solid #C6FF00;
-  outline: none;
-  padding: 5px;
-  width: 200px;
-  border-radius: 3px;
-  box-shadow: 0 0 10px #FF5722;
-  padding-right: 25px;
+    border: 1px solid #eee;
+    outline: none;
+    padding: 5px;
+    width: 200px;
+    border-radius: 3px;
+    padding-right: 25px;
 }
+input:focus{
+border: 1px solid rgba(82, 168, 236, 0.8);
+outline: thin dotted \9;
+box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.1), 0 0 11px rgba(82, 168, 236, 0.8);
+}
+label{font-size: 15px;margin-right: 5px;}
 
-
-.content .add-music .form .input-music-name {
+ .input-music-name {
   margin-bottom: 1.8rem;
 }
 
-.content .add-music .form .input-music-src {
+ .input-music-src {
   margin-bottom: 1.8rem;
 }
 
-.content .add-music .form .input-music-img-src {
+ .input-music-img-src {
   margin-bottom: 2rem;
 }
 
-.content .add-music .form .input-btn {
-
+ .input-btn {
+  text-align: right;
+  padding-right: 30px;
 }
 
-.content .add-music .form .input-btn button {
-  background: white;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 1px 1px 9px #FF5722;
-  margin: auto 15px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #263238;
-  padding: 7px;
-  border-bottom: 1px dotted green;
+ .input-btn button {
+    border: none;
+    outline: none;
+    color:#fff;
+    margin: 0 10px;
+    padding: 7px 12px;
+    background: #427cd3;
+    border:1px solid #337ff3;
+    cursor: pointer;
+    border-radius: 2px;
 }
-
-.content .add-music .form .input-btn button:first-child {
-  margin-left: 2rem;
-}
-
-.content .music-list {
+ .input-btn button:hover{
+  background: #337ff3;
+ }
+ .music-list {
   position: absolute;
   z-index: 3;
   right: 0;
@@ -523,49 +510,57 @@ input {
 }
 
 .content li img {
-  width: 20px;
-  height: 20px;
-  position: relative;
-  margin-left: 10px;
-  top: 3px;
-  cursor: pointer;
+    width: 20px;
+    float: right;
+    margin-top: 11px;
+    cursor: pointer;
 }
 
 ul {
   list-style: decimal;
   background: rgba(0, 0, 0, .7);
   margin: 0;
-  box-shadow: 0 0 6px #2196F3;
-  border-radius: 10px 0 0 10px;
+  padding: 2px 10px 2px 30px;
+  box-shadow: 0px 0px 10px rgba(255,255,255,.3) inset; 
 }
-
-ul li {
-  color: #BDBDBD;
-  border-bottom: 1px solid #616161;
-  font-weight: 400;
-  padding-right: 5px;
-  padding-top: 7px;
-  padding-bottom: 7px;
+ul li{
+    color: #BDBDBD;
+    border-bottom: 1px solid #616161;
+    line-height: 40px;
+    font-size: 15px;
+}
+ul li:last-of-type{
+  border-bottom: none;
+}
+ul li:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+ul li span{
   cursor: pointer;
+  display: inline-block;
+  min-width: 180px;
+  margin-right: 10px;
 }
-
-.content .bg-img img {
+ul li:hover{color: #92d0fa;}
+ .bg-img img {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
-  height: 100%;
+  height: 99%;
   filter: blur(8px);
   z-index: -1;
 }
 
-.content .content-header {
+ .content-header {
   flex: 1;
 }
 
-.content .img {
+ .img {
   flex: 5;
   display: flex;
 }
@@ -579,7 +574,7 @@ ul li {
   }
 }
 
-.content .img img {
+ .img img {
   width: 240px;
   height: 240px;
   border-radius: 120px;
@@ -591,11 +586,11 @@ ul li {
   animation: rotateAnimation 18s linear infinite;
 }
 
-.content .content-footer {
+.content-footer {
   flex: 1;
 }
 
-.content .select-skin {
+ .select-skin {
   width: 22px;
   height: 121px;
   position: absolute;
@@ -603,7 +598,7 @@ ul li {
   bottom: 60px;
 }
 
-.content .select-skin div {
+ .select-skin div {
   position: absolute;
   width: 20px;
   height: 20px;
@@ -612,29 +607,29 @@ ul li {
 }
 
 
-.content .select-skin div.four {
+ .select-skin div.four {
   bottom: 95px;
   background-color: #1B5E20;
   flex: 1;
 }
 
-.content .select-skin div.one {
+ .select-skin div.one {
   bottom: 65px;
   background-color: #B72712;
   flex: 1;
 }
-.content .select-skin div.two {
+ .select-skin div.two {
   bottom: 35px;
   background-color: #1565C0;
   flex: 1;
 }
-.content .select-skin div.three {
+.select-skin div.three {
   bottom: 5px;
   background-color: #212121;
   flex: 1;
 }
 
-.content img.skin  {
+ img.skin  {
   width: 40px;
   height: 40px;
   position: absolute;
@@ -645,7 +640,6 @@ ul li {
 
 .footer {
   flex: 1.8;
-  border-top: 1px white solid;
   display: flex;
   background-color: #212121;
 }
