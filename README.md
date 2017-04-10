@@ -7,10 +7,10 @@
 
 ## 预览
 ### 在线预览
-在线预览地址：👉 [Vue音乐播放器](https://microzz.com:3000/vue-music/)
+在线预览地址：👉 [Vue音乐播放器](https://microzz.com/vue-music/)
 
 ### 预览图
-![Vue音乐播放器升级版 - microzz.com](https://icdn.microzz.com/20170408_vue_music/preview.gif) 
+![Vue音乐播放器升级版 - microzz.com](https://github.com/microzz/vue-music-player/blob/2.0.0/preview/preview.gif?raw=true) 
 
 更多预览图请看👉 [更多](https://github.com/microzz/vue-music-player/tree/2.0.0/preview)
 
@@ -68,6 +68,8 @@ npm run build --report
 
 ## About
 源代码地址：👉 [GitHub](https://github.com/microzz/vue-music-player) 
-个人网站：🔗[microzz-IT技术分享](https://microzz.com/) 
-GitHub：🔗[microzz](https://github.com/microzz)
+
+个人网站：🔗[microzz-IT技术分享](https://microzz.com/) 
+
+GitHub：🔗[microzz](https://github.com/microzz)
 
