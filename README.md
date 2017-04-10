@@ -7,7 +7,7 @@
 
 ## 预览
 ### 在线预览
-在线预览地址：👉 [Vue音乐播放器](https://microzz.com:3000/vue-music/)
+在线预览地址：👉 [Vue音乐播放器](https://microzz.com/vue-music/)
 
 ### 预览图
 ![Vue音乐播放器升级版 - microzz.com](https://github.com/microzz/vue-music-player/blob/2.0.0/preview/preview.gif?raw=true) 
