@@ -104,7 +104,7 @@ export default {
         this.isLoading = true;
         this.$store.commit('showMiniMusic', false);
         this.keywords = keywords;
-        this.axios.get('/api//search/100/' + keywords)
+        this.axios.get('/api/search/100/' + keywords)
           .then(res => res.data.data.song)
           .then(song => {
             this.musicList = song.list;
