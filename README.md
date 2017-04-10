@@ -1,6 +1,7 @@
-这里是老的1.0.0版本，2.0.0版本已完成，请切换到2.0.0的[分支](https://github.com/microzz/vue-music-player/tree/2.0.0)查看...
+**这里是老的1.0.0版本，2.0.0版本已完成，请切换到2.0.0的[分支](https://github.com/microzz/vue-music-player/tree/2.0.0)查看...**
 # Vue.js写一个音乐播放器
 ## 在线预览
+2.0新版本预览地址: 🔗https://microzz.com:3000/vue-music/
 在线预览地址1: 🔗https://microzz.github.io/vue-music-player/
 在线预览地址2: 🔗http://microzz.cn/vue-music/
 
@@ -11,10 +12,10 @@ GitHub地址: 🔗https://github.com/microzz/vue-music-player
 ## 介绍
 学习Vue.js后，决定做个小项目锻炼一下，于是选择了典型的音乐播放器上手。其中遇到了很多坑，也学到了很多。代码可能还有瑕疵，欢迎大家到我的[GitHub](https://github.com/microzz/vue-music-player)反馈，相互交流学习。同时也欢迎大家follow和star😄
 预览图：
-![红色皮肤-microzz.com](https://github.com/microzz/vue-music-player/blob/master/preview/red.png?raw=true)
-![绿色皮肤-microzz.com](https://github.com/microzz/vue-music-player/blob/master/preview/green.png?raw=true)
-![蓝色皮肤-microzz.com](https://github.com/microzz/vue-music-player/blob/master/preview/blue.png?raw=true)
-![黑色皮肤-microzz.com](https://github.com/microzz/vue-music-player/blob/master/preview/black.png?raw=true)
+![红色皮肤-microzz.com](https://github.com/microzz/vue-music-player/blob/1.0.0/preview/red.png?raw=true)
+![绿色皮肤-microzz.com](https://github.com/microzz/vue-music-player/blob/1.0.0/preview/green.png?raw=true)
+![蓝色皮肤-microzz.com](https://github.com/microzz/vue-music-player/blob/1.0.0/preview/blue.png?raw=true)
+![黑色皮肤-microzz.com](https://github.com/microzz/vue-music-player/blob/1.0.0/preview/black.png?raw=true)
 
 ### 技术栈
 
