@@ -1,7 +1,7 @@
 **这里是老的1.0.0版本，2.0.0版本已完成，请切换到2.0.0的[分支](https://github.com/microzz/vue-music-player/tree/2.0.0)查看...**
 # Vue.js写一个音乐播放器
 ## 在线预览
-2.0新版本预览地址: 🔗https://microzz.com:3000/vue-music/ 
+2.0新版本预览地址: 🔗https://microzz.com/vue-music/ 
 
 在线预览地址1: 🔗https://microzz.github.io/vue-music-player/ 
 
