@@ -216,6 +216,7 @@ export default {
               position: absolute;
               left: 0;
               display: inline-block;
+              max-width: 100%;
               // width: 70%;
               height: 5px;
               background-color: #31c27c;

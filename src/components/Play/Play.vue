@@ -426,6 +426,7 @@ export default {
             position: absolute;
             left: 0;
             display: inline-block;
+            max-width: 100%;
             width: 100%;
             height: 100%;
             background-color: #31c27c;
