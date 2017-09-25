@@ -12,7 +12,7 @@
 ### 预览图
 ![Vue音乐播放器升级版 - microzz.com](https://github.com/microzz/preview/blob/master/vue_music_player/preview.gif?raw=true)
 
-更多预览图请看👉 [更多](https://github.com/microzz/preview/tree/master/vue_music_playe)
+更多预览图请看👉 [更多](https://github.com/microzz/preview/tree/master/vue_music_player)
 
 ## 技术栈
 **Vue2**：采用最新Vue2的语法😁
